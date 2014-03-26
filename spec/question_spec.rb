@@ -16,8 +16,9 @@ describe Question do
     new_response = Response.create(:participant_id => new_participant.id, :question_id => new_question.id, :answer_id => new_answer.id)
     new_response2 = Response.create(:participant_id => new_participant2.id, :question_id => new_question.id, :answer_id => new_answer2.id)
     new_question.responses.should eq [new_response, new_response2]
-    new_question.response_tally.should eq [["Blue", 1], ["Green", 1], ["Yellow", 0]]
+    new_question.response_tally.should eq [["Blue", 1, 0.5], ["Green", 1, 0.5], ["Yellow", 0, 0]]
   end
+
 
   it { should belong_to :survey }
   it { should have_many :answers }

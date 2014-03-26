@@ -8,12 +8,15 @@ class Question < ActiveRecord::Base
 
   def response_tally
     results = []
+    total = 0
     self.answers.each do |answer|
-      results << [answer.answer_text, response_total(answer.id)]
+      results << [answer.answer_text, response_total(answer.id), ((response_total(answer.id)).to_d / (self.responses.length).to_d) ]
     end
-
    results
   end
+
+
+
 
   def response_total(answer_id)
     count = 0

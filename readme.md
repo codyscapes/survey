@@ -14,7 +14,7 @@ As a survey taker, I want to view one question at a time, so that I don't get di
 
 As a survey taker, I want to be able to choose among the possible responses for each question, so that I can actually input my opinion. (COMPLETE)
 
-As a survey designer, I want to view the number and percentage of respondents who picked each possible response to each question, so that I can see the results of my survey.
+As a survey designer, I want to view the number and percentage of respondents who picked each possible response to each question, so that I can see the results of my survey. (COMPLETE)
 
 As a survey designer, I want to have the option to let respondents choose multiple answers for each question, so that I can have questions like "Choose all of the programming languages you know."
 

@@ -162,6 +162,7 @@ def review_survey(author)
   puts "Type delete to delete a survey"
   puts "Type add to add questions to a survey"
   puts "Type go back to go back to the author interface"
+  puts "Type view to view questions and answers for a survey"
   puts "\n\n"
 
   case gets.chomp
@@ -171,7 +172,10 @@ def review_survey(author)
     input.destroy
     puts 'survey destroyed'
     review_survey(author)
-    # NEED TO DELETE OTHER DATA RELATED TO THE SURVEY
+  when 'view'
+    puts 'what survey do you want to see answers for?'
+    survey = Survey.find_by(name: gets.chomp)
+    view_survey_results(author, survey)
   when 'add'
     puts 'what survey do you want to add questions to?'
     survey = Survey.find_by(name: gets.chomp)
@@ -181,6 +185,23 @@ def review_survey(author)
   else
     puts 'that is not a valid option'
   end
+end
+
+def view_survey_results (author, survey)
+  system('clear')
+  puts survey.name + "\n\n"
+  survey_questions = Question.where(:survey_id => survey.id)
+  survey_questions.each do |question|
+    puts question.question_text + "\n"
+    tallies = question.response_tally
+    tallies.each do |tally|
+      puts "#{tally[0]} was choosen #{tally[1]} times. #{tally[2]*100}%"
+    end
+    puts "\n\n"
+  end
+  input = gets.chomp
+  puts 'type enter to return to the main menu'
+  main_menu
 end
 
 def create_survey(author)
